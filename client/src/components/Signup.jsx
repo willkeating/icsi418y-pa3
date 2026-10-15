@@ -10,7 +10,7 @@ function Signup(){//signup component
     async function handleSubmit(event){
         event.preventDefault();//need to perform separate ops than std. form sub
         console.log({fName, lName, username, password});//display vals to see if working right
-        const response = await fetch("http://localhost:9000/signup",{//
+        const response = await fetch("http://localhost:9000/signup",{//db server conn path
             method: "POST",
             headers: {
                 "Content-Type": "application/json",//tell server we are sending json

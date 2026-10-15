@@ -1,13 +1,30 @@
-
+import {useState} from "react";
 import Signup from './components/Signup';
 import Login from './components/Login';//grab code from signup and login
+import CreateProject from './components/CreateProject';
+import ProjectList from './components/ProjectList';
+import ProjectMembers from './components/ProjectMembers';
 
 
 function App(){
+    const [refreshKey, setRefreshKey] = useState(0);
+
+    function handleProjectCreated(){
+        setRefreshKey(oldValue => oldValue + 1);
+    }
+
+
   return (//render the signup and login components
       <div>
-        <Signup />
-        <Login />
+          <h1>PA3</h1>
+          <Signup/>
+          <Login/>
+          <br/>
+          <CreateProject onProjectCreated={handleProjectCreated}/>
+          <br/>
+          <ProjectList refreshKey={refreshKey}/>
+          <br/>
+          <ProjectMembers refreshKey={refreshKey}/>
       </div>
   );
 }
